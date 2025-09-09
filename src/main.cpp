@@ -154,6 +154,8 @@ void setup() {
 }
 
 void loop() {
+  //jeuxLumiere1();
+  //jeuxLumiere2();
   jeuxLumiere3();
 }
 
