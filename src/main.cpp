@@ -80,16 +80,80 @@ void jeuxLumiere1()
   allume_del2(255, 0, 0); // Rouge
   allume_del3(0, 255, 0); // Vert
   delay(1000);
+  // Éteindre les DELs
+  allume_del1(0, 0, 0);
+  allume_del2(0, 0, 0);
+  allume_del3(0, 0, 0);
+  delay(1000);
 }
+
+void jeuxLumiere2()
+{
+  //Faire allumer les DELs en blanc
+  allume_del1(255, 255, 255); // Blanc
+  allume_del2(255, 255, 255); // Blanc
+  allume_del3(255, 255, 255); // Blanc
+  delay(1000);
+  //Faire allumer les DELs une à la suite de l'autre avec des couleurs
+  //au hasard
+  allume_del1(random(0, 256), random(0, 256), random(0, 256));
+  delay(500);
+  allume_del2(random(0, 256), random(0, 256), random(0, 256));
+  delay(500);
+  allume_del3(random(0, 256), random(0, 256), random(0, 256));
+  delay(1000);
+  //Éteindre les DELs
+  allume_del1(0, 0, 0);
+  allume_del2(0, 0, 0);
+  allume_del3(0, 0, 0);
+  delay(1000);
+} 
+
+void jeuxLumiere3()
+{
+  //Faire allumer les DELs en rouge si on appuie sur le bouton B
+  //en vert si on appuie sur le bouton A
+  //et en bleu si on appuie sur le bouton C
+  if (isBitSet(PINC, BTNA) == 0) // Bouton A appuyé
+  {
+    //Allumer les DELs en vert
+    allume_del1(0, 255, 0); 
+    allume_del2(0, 255, 0); 
+    allume_del3(0, 255, 0); 
+  }
+  else if (isBitSet(PINC, BTNB) == 0) // Bouton B appuyé
+  {
+    //Allumer les DELs en rouge
+    allume_del1(255, 0, 0); 
+    allume_del2(255, 0, 0); 
+    allume_del3(255, 0, 0); 
+  }
+  else if (isBitSet(PINC, BTNC) == 0) // Bouton C appuyé
+  {
+    //Allumer les DELs en bleu
+    allume_del1(0, 0, 255); 
+    allume_del2(0, 0, 255); 
+    allume_del3(0, 0, 255); 
+  }
+  else // Aucun bouton appuyé
+  {
+    //Éteindre les DELs
+    allume_del1(0, 0, 0); 
+    allume_del2(0, 0, 0); 
+    allume_del3(0, 0, 0); 
+  }
+}
+
 
 void setup() {
   DDRG = setBitM(DDRG, B00000111); // Configure les broches de la DEL1 RVB comme sorties
   DDRL = setBitM(DDRL, B11111100); // Configure les broches de la DEL2 et DEL3 RVB comme sorties
   DDRC = clearBitM(DDRC, B01110000); // Configure les broches des boutons-poussoirs comme entrées
   PORTC = setBitM(PORTC, B01110000); // Active les résistances pullup internes pour les boutons-poussoirs
+  randomSeed(analogRead(0)); // Initialisation du générateur de nombres aléatoires
 }
 
 void loop() {
-  jeuxLumiere1();
+  jeuxLumiere3();
 }
 
