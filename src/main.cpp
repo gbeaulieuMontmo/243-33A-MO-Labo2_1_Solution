@@ -1,3 +1,14 @@
+/**************************************************************/
+// Date de création du programme: 10 septembre 2025
+// Date de la dernière modification: 10 septembre 2025
+// Nom du programmeur principal: Guillaume Beaulieu
+//
+// But du programme: solution de la manipulation 1 du laboratoire 1
+// du cours 243-33A-MO Microcontrôleur 2
+//
+// Pour obtenir cet exemple de code, voir le dépôt GitHub suivant :
+// https://github.com/gbeaulieuMontmo/243-33A-MO-Labo2_1_Solution.git
+/**************************************************************/
 #include <Arduino.h>
 #include <bits_manip.h> //ajout de la bibliothèque bits_manip.h
 
