@@ -157,9 +157,13 @@ void jeuxLumiere3()
 
 void jeuLumiere4()
 {
+  //Faire clignoter les DELs en rouge toutes les secondes
+  //sans utiliser la fonction delay()
   unsigned long duree = 1000;
   static unsigned long dernierClignotement = millis();
   static bool delAllumees = false;
+  //Vérifier si une seconde s'est écoulée
+  //Si oui, changer l'état des DELs
   if((millis() - dernierClignotement) >= duree)
   {
     dernierClignotement = millis();
