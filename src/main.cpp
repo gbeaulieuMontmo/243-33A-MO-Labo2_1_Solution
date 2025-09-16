@@ -155,7 +155,30 @@ void jeuxLumiere3()
   }
 }
 
+void jeuLumiere4()
+{
+  unsigned long duree = 1000;
+  static unsigned long dernierClignotement = millis();
+  static bool delAllumees = false;
+  if((millis() - dernierClignotement) >= duree)
+  {
+    dernierClignotement = millis();
+    if(delAllumees == false) {
+      //Allumer les DELs en rouge
+      allume_del1(255, 0, 0); 
+      allume_del2(255, 0, 0); 
+      allume_del3(255, 0, 0); 
+      delAllumees = true;
+    } else {
+      //Éteindre les DELs
+      allume_del1(0, 0, 0); 
+      allume_del2(0, 0, 0); 
+      allume_del3(0, 0, 0); 
+      delAllumees = false;
+    }
+  }
 
+}
 void setup() {
   DDRG = setBitM(DDRG, B00000111); // Configure les broches de la DEL1 RVB comme sorties
   DDRL = setBitM(DDRL, B11111100); // Configure les broches de la DEL2 et DEL3 RVB comme sorties
@@ -166,7 +189,7 @@ void setup() {
 
 void loop() {
   //jeuxLumiere1();
-  //jeuxLumiere2();
-  jeuxLumiere3();
+  jeuxLumiere2();
+  //jeuxLumiere3();
 }
 
